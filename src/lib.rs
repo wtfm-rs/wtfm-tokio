@@ -4,8 +4,7 @@
 //! ## Why do we need a separate repo?
 //! We want to use [tokio] runtime for async functions.
 //! Our minimum `Cargo.toml` only pulls in [tokio] crate
-//! so that we can write tests/examples and review the minimum amount of
-//! dependencies.
+//! so that we can write tests with deep dive to the dependencies.
 //! ```toml
 //! [package]
 //! name = "wtfm-rs-tokio"
@@ -13,7 +12,7 @@
 //! edition = "2024"
 //!
 //! [dependencies]
-//! tokio = { version = "1.49.0", features = ["macros", "process", "rt-multi-thread"] }
+//! tokio = { version = "1.49.0", features = ["full"] }
 //! ```
 //! ## current thread
 //! ```
