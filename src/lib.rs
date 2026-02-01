@@ -15,6 +15,30 @@
 //! [dependencies]
 //! tokio = { version = "1.49.0", features = ["macros", "process", "rt-multi-thread"] }
 //! ```
+//! ## current thread
+//! ```
+//! tokio::runtime::Builder::new_current_thread()
+//!        .enable_all()
+//!        .build()
+//!        .unwrap()
+//!        .block_on(async {
+//!            assert!(true);
+//!        })
+//!
+//! ```
+//! ## multi-thread
+//! ```
+//! tokio::runtime::Builder::new_multi_thread()
+//!        .enable_all()
+//!        .build()
+//!        .unwrap()
+//!        .block_on(async {
+//!            assert!(true);
+//!        })
+//!
+//! ```
+
+//! ## [tokio::main]
 //! ```
 //! use tokio::process::Command;
 //!
@@ -30,3 +54,35 @@
 //! }
 //! ```
 //!
+#[cfg(test)]
+#[tokio::test]
+async fn current_thread_test() {
+    assert!(true);
+}
+
+#[test]
+fn current_thread_expanded_test() {
+    tokio::runtime::Builder::new_current_thread()
+        .enable_all()
+        .build()
+        .unwrap()
+        .block_on(async {
+            assert!(true);
+        })
+}
+
+#[tokio::test(flavor = "multi_thread")]
+async fn multi_thread_test() {
+    assert!(true);
+}
+
+#[test]
+fn multi_thread_expanded_test() {
+    tokio::runtime::Builder::new_multi_thread()
+        .enable_all()
+        .build()
+        .unwrap()
+        .block_on(async {
+            assert!(true);
+        })
+}
