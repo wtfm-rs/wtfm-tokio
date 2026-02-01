@@ -1,3 +1,4 @@
+#![doc(html_playground_url = "https://play.rust-lang.org/")]
 //! # Introduction
 //! This is the tokio version of <https://wtfm-rs.github.io/doc/wtfm_rs/>.
 //! ## Why do we need a separate repo?
